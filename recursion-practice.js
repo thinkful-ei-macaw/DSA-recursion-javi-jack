@@ -74,3 +74,19 @@ function nthTri(num) {
 }
 
 console.log(nthTri(7));
+
+/* Write a recursive function that splits a string based on a 
+separator (similar to String.prototype.split). 
+Don't use JS array's split function to solve this problem. */
+
+function strSplit(str, sep) {
+  let currentSep = str.indexOf(sep);
+  if(currentSep === -1) {
+    return [str];
+  } else {
+    return [str.slice(0, currentSep), ...strSplit(str.slice(currentSep+1), sep)]
+  }
+}
+
+console.log(strSplit('02/20/2020', '/'));
+
