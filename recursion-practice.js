@@ -107,3 +107,42 @@ function fib(num, cur = 1, prev = 0) {
 }
 
 fib(7);
+
+/*
+Write a recursive function that finds the factorial of a given number. 
+The factorial of a number can be found by multiplying that number by each number between itself and 1.
+ For example, the factorial of 5 is 5 * 4 * 3 * 2 * 1 = 120.
+ */
+
+ function factorial(num) {
+   if(num === 1) {
+     return 1;
+   }
+   return num * factorial(num - 1)
+ }
+
+console.log(factorial(8));
+
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+]
+
+function mazeEscape(maze, x = 0, y = 0){
+
+  if(maze[x][y] === 'e') {
+    return ''
+  }
+  else if(maze[x][y+1] != '*' && y+1 < maze[x].length) {
+    return 'R' + mazeEscape(maze, x, y+1)
+  }
+  else {
+    return 'D' + mazeEscape(maze, x+1, y)
+  }
+
+}
+
+console.log(mazeEscape(maze));
